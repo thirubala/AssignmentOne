@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head><title>Hello!</title></head>
+<body>
+<h1>Author List</h1>
+<p>
+{% for i in users %}
+	{{ i.name }},
+{% endfor %}
+</p>
+<h1>Posts</h1>
+<p>
+{% for i in posts %}
+	<p>{{ i.title }}</p>
+{% endfor %}
+<h1>Count of Posts</h1>
+<p>
+{% set count = [0] %}
+{% for i in users %}
+	{% for j in posts %}
+		{% if i.id == j.userId %}
+			{% if count.append(count.pop() + 1) %}{% endif %}
+		{% endif %}
+	{% endfor %}
+	{{ count[0] }}
+{% endfor %}
+<p>Count is: {{ count }}</p>
+</p>	
+</body>
+</html>
